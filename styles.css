@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+    font-family: Arial;
+    /* background-color: #dfffd0; */
+}
+
+div {
+    margin: 20px 0px;
+    background: white;
+}
+
+img {
+    padding: 20px;
+}
+
+.empty {
+    width: 160px;
+    height: 11px;
+    border-radius: 11px;
+    margin: auto;
+    background: #f1f1f1;
+}
+
+.water .full {
+    display: block;
+    height: 11px;
+    border-radius: 11px;
+    background: #bfe5ff;
+}
+
+.love .full {
+    display: block;
+    height: 11px;
+    border-radius: 11px;
+    background: #fac9e7;
+}
