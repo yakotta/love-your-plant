@@ -8,14 +8,14 @@
     <div>Care for your plant!</div>
     <img src="1.png" />
 
-    <div class="water">
+    <div>
         <div class="countdown water empty">
             <span id="water-bar" class="full" style="width: 100%"></span>
         </div>
         <button id="water-button">water <i class="icon ion-waterdrop"></i></button>
     </div>
 
-    <div class="love">
+    <div>
         <div class="countdown love empty">
             <span id="love-bar" class="full" style="width: 100%"></span>
         </div>
