@@ -9,17 +9,24 @@
     <img src="1.png" />
 
     <div>
-        <div class="countdown water empty">
-            <span id="water-bar" class="full" style="width: 100%"></span>
+        <div class="empty">
+            <div id="water-bar" class="water"></div>
         </div>
         <button id="water-button">water <i class="icon ion-waterdrop"></i></button>
     </div>
 
     <div>
-        <div class="countdown love empty">
-            <span id="love-bar" class="full" style="width: 100%"></span>
+        <div class="empty">
+            <div id="love-bar" class="love"></div>
         </div>
         <button id="love-button">love <i class="icon ion-ios-heart"></i></button>
+    </div>
+
+    <div>
+        <div class="empty">
+            <div id="light-bar" class="light"></div>
+        </div>
+        <button id="light-button">light <i class="icon ion-ios-lightbulb"></i></button>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
