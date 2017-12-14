@@ -1,6 +1,9 @@
 body {
     text-align: center;
     font-family: Arial;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* background-color: #dfffd0; */
 }
 
@@ -41,3 +44,19 @@ img {
     border-radius: 11px;
     background: #f8d975;
 }
+
+.fail {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.95);
+    /* box-shadow: inset 0px 0px 0px 5px #aada93; */
+    z-index: 2;
+}
+
+.hide {
+    display: none;
+}
+  
+.vertical-center {
+    max-width: 50%;
+}
+  

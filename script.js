@@ -7,10 +7,13 @@ $(document).ready(function(){
     var lightButton = $('#light-button');
     var lightBar = $('#light-bar');
 
-    // https://stackoverflow.com/questions/33096675/fill-progress-bar-in-x-seconds
-    // https://stackoverflow.com/questions/47780239/trigger-an-alert-when-a-css-width-style-animated-with-transitions-reaches-0
-    // https://stackoverflow.com/questions/5760892/can-a-setinterval-function-stop-itself
-
+    // when the player loses, unhide the fail-alert div and error-code span
+    youLose = function(errorType){
+        $('#fail-alert').removeClass('hide');
+        $('#error-code').html(errorType);
+        clearInterval(alertType);
+    }
+    
     // triggers auto-decay of the water bar
     waterBar.delay(3000).queue(function(){
         waterBar.css({'width': '0%', 'transition': 'width 8s linear'});
@@ -27,10 +30,7 @@ $(document).ready(function(){
     // checks to see if water bar zeroes out
     var waterAlert = setInterval(function() {
         var waterWidth = parseInt(waterBar.css('width').slice(0, -2));
-        if (waterWidth <= 0) {
-            alert('you killed your plant :( you didn\'t give it enough water');
-            clearInterval(waterAlert);
-        }
+        if (waterWidth <= 0) {youLose('water', waterAlert)};
     }, 300);
 
     // triggers auto-decay of the love bar
@@ -49,10 +49,7 @@ $(document).ready(function(){
     // checks to see if love bar zeroes out
     var loveAlert = setInterval(function() {
         var loveWidth = parseInt(loveBar.css('width').slice(0, -2));
-        if (loveWidth <= 0) {
-            alert('you killed your plant :( you didn\'t give it enough love');
-            clearInterval(loveAlert);
-        }
+        if (loveWidth <= 0) {youLose('love', loveAlert)};
     }, 300);
 
     // triggers auto-decay of the light bar
@@ -71,9 +68,6 @@ $(document).ready(function(){
     // checks to see if light bar zeroes out
     var lightAlert = setInterval(function() {
         var lightWidth = parseInt(lightBar.css('width').slice(0, -2));
-        if (lightWidth <= 0) {
-            alert('you killed your plant :( you didn\'t give it enough light');
-            clearInterval(lightAlert);
-        }
+        if (lightWidth <= 0) {youLose('light', lightAlert)};
     }, 300);
 });

@@ -5,28 +5,36 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div>Care for your plant!</div>
-    <img src="1.png" />
-
-    <div>
-        <div class="empty">
-            <div id="water-bar" class="water"></div>
+    <div class="game">
+        <div id="fail-alert" class="vertical-center fail hide">
+            <p>You killed your plant :(</p>
+            <p>You didn't give it enough <span id="error-code"></span></p>
+            <p><a href="javascript:window.location.reload()">Click to refresh and try again</a></p>
         </div>
-        <button id="water-button">water <i class="icon ion-waterdrop"></i></button>
-    </div>
 
-    <div>
-        <div class="empty">
-            <div id="love-bar" class="love"></div>
-        </div>
-        <button id="love-button">love <i class="icon ion-ios-heart"></i></button>
-    </div>
+        <div>Care for your plant!</div>
+        <img src="1.png" />
 
-    <div>
-        <div class="empty">
-            <div id="light-bar" class="light"></div>
+        <div>
+            <div class="empty">
+                <div id="water-bar" class="water"></div>
+            </div>
+            <button id="water-button">water <i class="icon ion-waterdrop"></i></button>
         </div>
-        <button id="light-button">light <i class="icon ion-ios-lightbulb"></i></button>
+
+        <div>
+            <div class="empty">
+                <div id="love-bar" class="love"></div>
+            </div>
+            <button id="love-button">love <i class="icon ion-ios-heart"></i></button>
+        </div>
+
+        <div>
+            <div class="empty">
+                <div id="light-bar" class="light"></div>
+            </div>
+            <button id="light-button">light <i class="icon ion-ios-lightbulb"></i></button>
+        </div> 
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
