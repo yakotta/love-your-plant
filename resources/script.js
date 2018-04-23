@@ -42,7 +42,7 @@ $(document).ready(function(){
             value.bar.css('width', computedWidth);
         }
 
-        // checks for empty bars
+        // kills plant when a bar is empty
         var failAlert = setInterval(function(){
             if (parseInt(value.bar.css('width').slice(0, -2)) <= 0){
                 $('#fail-alert').removeClass('hide');
@@ -50,6 +50,7 @@ $(document).ready(function(){
                 death(values.water);
                 death(values.love);
                 death(values.light);
+                timer.stop();
                 clearInterval(failAlert);
             };
         }, 300);
@@ -67,4 +68,12 @@ $(document).ready(function(){
         game(values.love);
         game(values.light);
     });
+
+    // Uses EasyTimer.js to create a timer
+    var timer = new Timer();
+    timer.start({precision: 'secondTenths'});
+    timer.addEventListener('secondTenthsUpdated', function (e) {
+        var endTime = timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']);
+        $('#timer .values').html(endTime);
+    });  
 });

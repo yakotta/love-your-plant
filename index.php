@@ -51,9 +51,14 @@
             </div>
             <button id="light-button">light <i class="icon ion-ios-lightbulb"></i></button>
         </div> 
+
+        <div id="timer">
+            <div class="values">00:00:0</div>
+        </div>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="resources/easytimer.min.js"></script>   
     <script src="resources/script.js"></script>
 </body>
 </html>
