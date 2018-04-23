@@ -24,6 +24,14 @@ $(document).ready(function(){
         }
     }
 
+    // Uses EasyTimer.js to create a timer
+    var timer = new Timer();
+    timer.start({precision: 'secondTenths'});
+    timer.addEventListener('secondTenthsUpdated', function (e) {
+        var currentTime = timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']);
+        $('#timer .values').html(currentTime);
+    });
+
     // Establishes the game mechanics
     game = function(value){
         // triggers auto-decay of a bar
@@ -50,20 +58,24 @@ $(document).ready(function(){
                 death(values.water);
                 death(values.love);
                 death(values.light);
+                
+                // gets final score
+                var finalScore = timer.getTimeValues();
                 timer.stop();
+
                 clearInterval(failAlert);
             };
         }, 300);
     }
 
-    // refills bars 100% and sets timer to 0
+    // Refills bars 100% and sets timer to 0
     gameReset = function(value){
         value.bar.css({'width': '100%', 'transition': 'width 0.5s linear'});
         setTimeout(function(){value.bar.css(value.css)}, value.delay);
         setTimeout(function(){timer.reset()}, 1000);
     }
 
-    // resets the bars and timer for a new round
+    // Resets the bars and timer for a new round
     $('#reset').click(function(){
         $('#fail-alert').addClass('hide');
         gameReset(values.water);
@@ -88,12 +100,4 @@ $(document).ready(function(){
         game(values.love);
         game(values.light);
     });
-
-    // Uses EasyTimer.js to create a timer
-    var timer = new Timer();
-    timer.start({precision: 'secondTenths'});
-    timer.addEventListener('secondTenthsUpdated', function (e) {
-        var currentTime = timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']);
-        $('#timer .values').html(currentTime);
-    });  
 });

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <?php
     $cactus = [
-        "1" => ["id" => "c1", "image" => "images/1.png"],
-        "2" => ["id" => "c2", "image" => "images/2.png"],
-        "3" => ["id" => "c3", "image" => "images/3.png"],
-        "4" => ["id" => "c4", "image" => "images/4.png"],
-        "5" => ["id" => "c5", "image" => "images/5.png"],
-        "6" => ["id" => "c6", "image" => "images/6.png"]
+        "1" => ["image" => "images/1.png"],
+        "2" => ["image" => "images/2.png"],
+        "3" => ["image" => "images/3.png"],
+        "4" => ["image" => "images/4.png"],
+        "5" => ["image" => "images/5.png"],
+        "6" => ["image" => "images/6.png"]
     ]
 ?>
 
@@ -20,7 +20,7 @@
         <p>Choose your plant</p>
         <?php
             for($x = 1; $x <= 6; $x++){
-                print("<img id=" . $cactus[$x][id] . " src=" . $cactus[$x][image] . ">");
+                print("<img src=" . $cactus[$x][image] . ">");
             }
         ?>
     </div>
