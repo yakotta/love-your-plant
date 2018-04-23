@@ -35,11 +35,21 @@ $(document).ready(function(){
             setTimeout(function(){value.bar.css(value.css)}, value.delay);
         });
 
+        // stops bars from decaying upon plant death
+        death = function(value){
+            var computedWidth = value.bar.css('width');
+            value.bar.css({'transition': 'none'});
+            value.bar.css('width', computedWidth);
+        }
+
         // checks for empty bars
         var failAlert = setInterval(function(){
             if (parseInt(value.bar.css('width').slice(0, -2)) <= 0){
                 $('#fail-alert').removeClass('hide');
                 $('#error-code').html(value.string);
+                death(values.water);
+                death(values.love);
+                death(values.light);
                 clearInterval(failAlert);
             };
         }, 300);

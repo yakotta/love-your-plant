@@ -9,6 +9,7 @@
         "6" => ["id" => "c6", "image" => "images/6.png"]
     ]
 ?>
+
 <html>
 <head>
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -24,31 +25,27 @@
         ?>
     </div>
 
-    <div id="game" class="hide">
-        <div id="fail-alert" class="vertical-center fail hide">
-            <p>You killed your plant :(</p>
-            <p>You didn't give it enough <span id="error-code"></span></p>
-            <p><a href="javascript:window.location.reload()">Click to refresh and try again</a></p>
-        </div>
+    <div id="fail-alert" class="hide">
+        <p>You killed your plant :(</p>
+        <p>You didn't give it enough <span id="error-code"></span></p>
+        <p><a href="javascript:window.location.reload()">Click to refresh and try again</a></p>
+    </div>
 
-        <div>Care for your plant!</div>
+    <div id="game" class="hide">
+        <p>Care for your plant!</p>
         <img id="selected-plant" />
 
-        <div>
+        <div id="bars">
             <div class="empty">
                 <div id="water-bar" class="water"></div>
             </div>
             <button id="water-button">water <i class="icon ion-waterdrop"></i></button>
-        </div>
 
-        <div>
             <div class="empty">
                 <div id="love-bar" class="love"></div>
             </div>
             <button id="love-button">love <i class="icon ion-ios-heart"></i></button>
-        </div>
 
-        <div>
             <div class="empty">
                 <div id="light-bar" class="light"></div>
             </div>
