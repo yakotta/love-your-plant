@@ -28,7 +28,7 @@
     <div id="fail-alert" class="hide">
         <p>You killed your plant :(</p>
         <p>You didn't give it enough <span id="error-code"></span></p>
-        <p><a href="javascript:window.location.reload()">Click to refresh and try again</a></p>
+        <p><button id="reset">Try again</button></p>
     </div>
 
     <div id="game" class="hide">

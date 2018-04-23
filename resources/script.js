@@ -56,6 +56,26 @@ $(document).ready(function(){
         }, 300);
     }
 
+    // refills bars 100% and sets timer to 0
+    gameReset = function(value){
+        value.bar.css({'width': '100%', 'transition': 'width 0.5s linear'});
+        setTimeout(function(){value.bar.css(value.css)}, value.delay);
+        setTimeout(function(){timer.reset()}, 1000);
+    }
+
+    // resets the bars and timer for a new round
+    $('#reset').click(function(){
+        $('#fail-alert').addClass('hide');
+        gameReset(values.water);
+        gameReset(values.love);
+        gameReset(values.light);
+
+        // Re-starts the game
+        game(values.water);
+        game(values.love);
+        game(values.light);
+    })
+
     // Allows the player to select their cactus
     $('#start-screen img').click(function(){
         var selection = $(this).attr("src");
@@ -73,7 +93,7 @@ $(document).ready(function(){
     var timer = new Timer();
     timer.start({precision: 'secondTenths'});
     timer.addEventListener('secondTenthsUpdated', function (e) {
-        var endTime = timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']);
-        $('#timer .values').html(endTime);
+        var currentTime = timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']);
+        $('#timer .values').html(currentTime);
     });  
 });
