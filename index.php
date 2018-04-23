@@ -13,7 +13,7 @@
         </div>
 
         <div>Care for your plant!</div>
-        <img src="1.png" />
+        <img src="images/1.png" />
 
         <div>
             <div class="empty">
