@@ -1,11 +1,30 @@
 <!DOCTYPE html>
+<?php
+    $cactus = [
+        "1" => ["id" => "c1", "image" => "images/1.png"],
+        "2" => ["id" => "c2", "image" => "images/2.png"],
+        "3" => ["id" => "c3", "image" => "images/3.png"],
+        "4" => ["id" => "c4", "image" => "images/4.png"],
+        "5" => ["id" => "c5", "image" => "images/5.png"],
+        "6" => ["id" => "c6", "image" => "images/6.png"]
+    ]
+?>
 <html>
 <head>
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resources/styles.css">
 </head>
 <body>
-    <div class="game">
+    <div id="start-screen">
+        <p>Choose your plant</p>
+        <?php
+            for($x = 1; $x <= 6; $x++){
+                print("<img id=" . $cactus[$x][id] . " src=" . $cactus[$x][image] . ">");
+            }
+        ?>
+    </div>
+
+    <div id="game" class="hide">
         <div id="fail-alert" class="vertical-center fail hide">
             <p>You killed your plant :(</p>
             <p>You didn't give it enough <span id="error-code"></span></p>
@@ -13,7 +32,7 @@
         </div>
 
         <div>Care for your plant!</div>
-        <img src="images/1.png" />
+        <img id="selected-plant" />
 
         <div>
             <div class="empty">
@@ -38,6 +57,6 @@
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="resources/script.js"></script>
 </body>
 </html>

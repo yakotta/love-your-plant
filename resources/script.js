@@ -44,8 +44,17 @@ $(document).ready(function(){
             };
         }, 300);
     }
-    
-    game(values.water);
-    game(values.love);
-    game(values.light);
+
+    // Allows the player to select their cactus
+    $('#start-screen img').click(function(){
+        var selection = $(this).attr("src");
+        $('#start-screen').addClass("hide");
+        $('#game').removeClass("hide");
+        $('#selected-plant').attr("src", selection)
+
+        // Starts the game
+        game(values.water);
+        game(values.love);
+        game(values.light);
+    });
 });

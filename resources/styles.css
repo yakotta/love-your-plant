@@ -59,4 +59,7 @@ img {
 .vertical-center {
     max-width: 50%;
 }
-  
+
+#start-screen img {
+    height: 100px;
+}
