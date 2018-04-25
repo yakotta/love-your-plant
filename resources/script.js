@@ -39,15 +39,27 @@ $(document).ready(function(){
 
         // refills a bar on button click, then re-decays it after delay time
         value.button.click(function(){
+            // kills plant if it's overwatered
+            if($(this).attr("id") == "water-button"){
+                var emptyWidth = 160;
+                var waterLevel = parseInt(value.bar.css('width').slice(0, -2))
+                if(waterLevel / emptyWidth >= .5){
+                    var message = "You gave it too much ";
+                    killPlant(value, message)
+                    return;
+                }
+            } 
+            
+            // refills a bar on button click, then re-decays it after a delay time
             value.bar.css({'width': '100%', 'transition': 'width 0.5s linear'});
             setTimeout(function(){value.bar.css(value.css)}, value.delay);
         });
 
         // kils the plant
-        killPlant = function(value){
+        killPlant = function(value, message){
             // displays failure message and stops bars from continuing to decay
             $('#fail-alert').removeClass('hide');
-            $('#error-code').html("You didn't give it enough " + value.string);
+            $('#error-code').html(message + value.string);
             stopDecay(values.water);
             stopDecay(values.love);
             stopDecay(values.light);
@@ -69,7 +81,8 @@ $(document).ready(function(){
         // kills plant when a bar is empty
         var failAlert = setInterval(function(){
             if (parseInt(value.bar.css('width').slice(0, -2)) <= 0){
-                killPlant(value);
+                var message = "You didn't give it enough ";
+                killPlant(value, message);
                 clearInterval(failAlert);
             };
         }, 300);
