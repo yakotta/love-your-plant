@@ -77,14 +77,13 @@ $(document).ready(function(){
             timer.stop();
 
             // converts the final and high scores to floats
-            finalArr = finalScore.split(":").map(parseFloat);
-            finalFloat = finalArr[0]*60 + finalArr[1] + finalArr[2]/10;
-
-            highArr = highScore.split(":").map(parseFloat);
-            highFloat = highArr[0]*60 + highArr[1] + highArr[2]/10;
+            toFloat = function(score){
+                arr = score.split(":").map(parseFloat);
+                return arr[0]*60 + arr[1] + arr[2]/10;
+            }
 
             // compares final score to high score and updates the high score box
-            if(finalFloat > highFloat) highScore = finalScore;
+            if(toFloat(finalScore) > toFloat(highScore)) highScore = finalScore;
             $('#high-score span').html(highScore);
         }
 
