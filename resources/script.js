@@ -27,6 +27,8 @@ $(document).ready(function(){
         }
     }
 
+    var highScore = "00:00:0"; // this sets the high score to zero
+
     // Uses EasyTimer.js to create a timer
     var timer = new Timer();
     timer.start({precision: 'secondTenths'});
@@ -70,8 +72,20 @@ $(document).ready(function(){
             // disables the need replenishment buttons while plant is dead
             $('.need').attr('disabled', true);
 
-            // stops timer
+            // gets final score and stops the timer
+            var finalScore = timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']);
             timer.stop();
+
+            // converts the final and high scores to floats
+            finalArr = finalScore.split(":").map(parseFloat);
+            finalFloat = finalArr[0]*60 + finalArr[1] + finalArr[2]/10;
+
+            highArr = highScore.split(":").map(parseFloat);
+            highFloat = highArr[0]*60 + highArr[1] + highArr[2]/10;
+
+            // compares final score to high score and updates the high score box
+            if(finalFloat > highFloat) highScore = finalScore;
+            $('#high-score span').html(highScore);
         }
 
         // stops bars from decaying upon plant death
@@ -96,7 +110,6 @@ $(document).ready(function(){
     gameReset = function(value){
         value.bar.css({'width': '100%', 'transition': 'width 0.5s linear'});
         setTimeout(function(){value.bar.css(value.css)}, value.delay);
-        setTimeout(function(){timer.reset()}, 1000);
     }
 
     // Resets the bars, buttons, and timer for a new round
@@ -106,6 +119,7 @@ $(document).ready(function(){
         gameReset(values.water);
         gameReset(values.love);
         gameReset(values.light);
+        setTimeout(function(){timer.reset()}, 1000);
 
         // Re-starts the game
         game(values.water);
