@@ -1,10 +1,10 @@
 body {
     text-align: center;
-    font-family: Arial;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;    
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: #dfffd0; */
+    font-weight: normal;
 }
 
 div {
@@ -14,6 +14,15 @@ div {
 
 img {
     padding: 20px;
+}
+
+button {
+    font-family: inherit;
+}
+
+h1 {
+    font-weight: inherit;
+    font-size: 20px;
 }
 
 .empty {
@@ -55,6 +64,7 @@ img {
 
 #game {
     max-width: 50%;
+    margin: 0px;
 }
 
 #fail-alert {
@@ -63,4 +73,5 @@ img {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.85);
     z-index: 2;
+    padding: 5px;
 }

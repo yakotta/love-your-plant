@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="start-screen">
-        <p>Choose your plant</p>
+        <h1>Choose your plant</h1>
         <?php
             for($x = 1; $x <= 6; $x++){
                 print("<img src=" . $cactus[$x][image] . ">");
@@ -32,7 +32,7 @@
     </div>
 
     <div id="game" class="hide">
-        <p>Care for your plant!</p>
+        <h1>Care for your plant!</h1>
         <img id="selected-plant" />
 
         <div id="bars">
