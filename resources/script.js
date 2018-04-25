@@ -6,21 +6,24 @@ $(document).ready(function(){
             bar: $('#water-bar'),
             button: $('#water-button'),
             delay: 2500,
-            css: {'width': '0%', 'transition': 'width 8s linear'}
+            css: {'width': '0%', 'transition': 'width 8s linear'},
+            timeout: null
         },
         love: {
             string: 'love',
             bar: $('#love-bar'),
             button: $('#love-button'),
             delay: 1000,
-            css: {'width': '0%', 'transition': 'width 4s linear'}
+            css: {'width': '0%', 'transition': 'width 4s linear'},
+            timeout: null
         },
         light: {
             string: 'light',
             bar: $('#light-bar'),
             button: $('#light-button'),
             delay: 1500,
-            css: {'width': '0%', 'transition': 'width 6s linear'}
+            css: {'width': '0%', 'transition': 'width 6s linear'},
+            timeout: null
         }
     }
 
@@ -52,7 +55,7 @@ $(document).ready(function(){
             
             // refills a bar on button click, then re-decays it after a delay time
             value.bar.css({'width': '100%', 'transition': 'width 0.5s linear'});
-            setTimeout(function(){value.bar.css(value.css)}, value.delay);
+            value.bar.timeout = setTimeout(function(){value.bar.css(value.css)}, value.delay);
         });
 
         // kils the plant
@@ -76,6 +79,7 @@ $(document).ready(function(){
             var computedWidth = value.bar.css('width');
             value.bar.css({'transition': 'none'});
             value.bar.css('width', computedWidth);
+            clearTimeout(value.bar.timeout);
         }
 
         // kills plant when a bar is empty
