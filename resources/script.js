@@ -43,8 +43,24 @@ $(document).ready(function(){
             setTimeout(function(){value.bar.css(value.css)}, value.delay);
         });
 
+        // kils the plant
+        killPlant = function(value){
+            // displays failure message and stops bars from continuing to decay
+            $('#fail-alert').removeClass('hide');
+            $('#error-code').html("You didn't give it enough " + value.string);
+            stopDecay(values.water);
+            stopDecay(values.love);
+            stopDecay(values.light);
+
+            // disables the need replenishment buttons while plant is dead
+            $('.need').attr('disabled', true);
+
+            // stops timer
+            timer.stop();
+        }
+
         // stops bars from decaying upon plant death
-        death = function(value){
+        stopDecay = function(value){
             var computedWidth = value.bar.css('width');
             value.bar.css({'transition': 'none'});
             value.bar.css('width', computedWidth);
@@ -53,31 +69,23 @@ $(document).ready(function(){
         // kills plant when a bar is empty
         var failAlert = setInterval(function(){
             if (parseInt(value.bar.css('width').slice(0, -2)) <= 0){
-                $('#fail-alert').removeClass('hide');
-                $('#error-code').html(value.string);
-                death(values.water);
-                death(values.love);
-                death(values.light);
-                
-                // gets final score
-                var finalScore = timer.getTimeValues();
-                timer.stop();
-
+                killPlant(value);
                 clearInterval(failAlert);
             };
         }, 300);
     }
 
-    // Refills bars 100% and sets timer to 0
+    // Refills bars to 100% and sets timer to 0
     gameReset = function(value){
         value.bar.css({'width': '100%', 'transition': 'width 0.5s linear'});
         setTimeout(function(){value.bar.css(value.css)}, value.delay);
         setTimeout(function(){timer.reset()}, 1000);
     }
 
-    // Resets the bars and timer for a new round
+    // Resets the bars, buttons, and timer for a new round
     $('#reset').click(function(){
         $('#fail-alert').addClass('hide');
+        $('.need').attr('disabled', false)
         gameReset(values.water);
         gameReset(values.love);
         gameReset(values.light);
@@ -88,7 +96,7 @@ $(document).ready(function(){
         game(values.light);
     })
 
-    // Allows the player to select their cactus
+    // Allows the player to select their cactus then starts the game
     $('#start-screen img').click(function(){
         var selection = $(this).attr("src");
         $('#start-screen').addClass("hide");
@@ -99,5 +107,6 @@ $(document).ready(function(){
         game(values.water);
         game(values.love);
         game(values.light);
+        timer.reset();
     });
 });

@@ -27,7 +27,7 @@
 
     <div id="fail-alert" class="hide">
         <p>You killed your plant :(</p>
-        <p>You didn't give it enough <span id="error-code"></span></p>
+        <p id="error-code"></p>
         <p><button id="reset">Try again</button></p>
     </div>
 
@@ -39,24 +39,24 @@
             <div class="empty">
                 <div id="water-bar" class="water"></div>
             </div>
-            <button id="water-button">water <i class="icon ion-waterdrop"></i></button>
+            <button id="water-button" class="need">water <i class="icon ion-waterdrop"></i></button>
 
             <div class="empty">
                 <div id="love-bar" class="love"></div>
             </div>
-            <button id="love-button">love <i class="icon ion-ios-heart"></i></button>
+            <button id="love-button" class="need">love <i class="icon ion-ios-heart"></i></button>
 
             <div class="empty">
                 <div id="light-bar" class="light"></div>
             </div>
-            <button id="light-button">light <i class="icon ion-ios-lightbulb"></i></button>
+            <button id="light-button" class="need">light <i class="icon ion-ios-lightbulb"></i></button>
         </div> 
 
         <div id="timer">
             <div class="values">00:00:0</div>
         </div>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="resources/easytimer.min.js"></script>   
     <script src="resources/script.js"></script>
