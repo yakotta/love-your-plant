@@ -46,9 +46,9 @@ $(document).ready(function(){
         value.button.click(function(){
             // kills plant if it's overwatered
             if($(this).attr("id") == "water-button"){
-                var emptyWidth = 160;
+                var emptyWidth = parseInt($('.empty').css('width').slice(0, -2));
                 var waterLevel = parseInt(value.bar.css('width').slice(0, -2))
-                if(waterLevel / emptyWidth >= .5){
+                if(waterLevel / emptyWidth >= .6){
                     var message = "You gave it too much ";
                     killPlant(value, message)
                     return;
